@@ -56,6 +56,7 @@
     <Folder Include="bin\" />
     <Folder Include="models\" />
     <Folder Include="controller\" />
+    <Folder Include="sqls\" />
     <Folder Include="util\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
@@ -64,6 +65,7 @@
     <Folder Include="routes\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sqls\ACExpressAPI.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
     <Content Include="bin\ChangeConfig.ps1" />
