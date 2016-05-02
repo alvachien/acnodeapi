@@ -78,6 +78,7 @@
     <Content Include="public\TodoApp\index.html" />
     <Content Include="public\TodoApp\stylesheets\style.css" />
     <Content Include="public\TodoApp\view\home.html" />
+    <Content Include="public\TodoApp\view\register.html" />
     <Content Include="public\TodoApp\view\welcome.html" />
     <Content Include="sqls\ACExpressAPI.sql" />
     <Content Include="Web.config" />
