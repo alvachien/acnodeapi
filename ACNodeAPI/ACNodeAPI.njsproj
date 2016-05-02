@@ -21,7 +21,7 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
-    <StartWebBrowser>true</StartWebBrowser>
+    <StartWebBrowser>False</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,7 +36,9 @@
     <Compile Include="models\code.js" />
     <Compile Include="models\token.js" />
     <Compile Include="public\NoteApp\javascript\noteapp.js" />
-    <Compile Include="public\TodoApp\javascript\todoapp.js" />
+    <Compile Include="public\TodoApp\uicontroller\todoapp.js" />
+    <Compile Include="public\TodoApp\uicontroller\usercontroller.js" />
+    <Compile Include="public\TodoApp\viewmodel\usermodel.js" />
     <Compile Include="routes\apiclient.js" />
     <Compile Include="server.js" />
     <Compile Include="controller\authcontroller.js" />
@@ -62,9 +64,11 @@
     <Folder Include="public\NoteApp\javascript\" />
     <Folder Include="public\NoteApp\view\" />
     <Folder Include="public\TodoApp\" />
-    <Folder Include="public\TodoApp\javascript\" />
+    <Folder Include="public\TodoApp\uicontroller\" />
+    <Folder Include="public\TodoApp\viewmodel\" />
     <Folder Include="public\TodoApp\view\" />
     <Folder Include="public\TodoApp\stylesheets\" />
+    <Folder Include="public\TodoApp\view\users\" />
     <Folder Include="sqls\" />
     <Folder Include="util\" />
     <Folder Include="public\" />
@@ -78,7 +82,8 @@
     <Content Include="public\TodoApp\index.html" />
     <Content Include="public\TodoApp\stylesheets\style.css" />
     <Content Include="public\TodoApp\view\home.html" />
-    <Content Include="public\TodoApp\view\register.html" />
+    <Content Include="public\TodoApp\view\users\login.html" />
+    <Content Include="public\TodoApp\view\users\register.html" />
     <Content Include="public\TodoApp\view\welcome.html" />
     <Content Include="sqls\ACExpressAPI.sql" />
     <Content Include="Web.config" />

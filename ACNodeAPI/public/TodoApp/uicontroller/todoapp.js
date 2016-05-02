@@ -2,8 +2,9 @@
 /* global angular */
 (function () {
     "use strict";
-    
-    angular.module('acTodoApp', ["ui.router", 'ui.bootstrap'])        
+    var todoApp = angular.module('actodoapp', ["ui.router", 'ui.bootstrap', 'actodoapp.user']);
+
+    todoApp
 		.run(['$rootScope', '$state', '$stateParams', '$timeout', '$http', '$log', 
         function ($rootScope, $state, $stateParams, $timeout, $http, $log) {
             $rootScope.$state = $state;
@@ -105,15 +106,6 @@
                 .state('home.welcome', {
                         url: '',
                         templateUrl: 'view/welcome.html'
-                    })
-		        .state('home.userlist', {
-                        url: '/userlist',
-                        templateUrl: 'view/userlist.html',
-                        controller: 'UserListController'
-                    })
-                .state('home.userdetail', {
-                        url: '/userdetail',
-                        templateUrl: 'view/userdetail.html'
                     })
                 .state('home.about', {
                         url: '/about',
@@ -416,8 +408,6 @@
             };
         }])
 
-	.controller('UserListController', ['$scope', '$rootScope', '$state', '$http', '$log', function ($scope, $rootScope, $state, $http, $log) {
-        }])
 	
 	.controller('AboutController', ['$scope', '$rootScope', function ($scope, $rootScope) {
         }])
