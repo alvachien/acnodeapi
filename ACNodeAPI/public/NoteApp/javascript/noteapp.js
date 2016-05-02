@@ -3,8 +3,7 @@
 (function () {
     "use strict";
     
-    angular.module('acTodoApp', ["ui.router", "ngAnimate",'ui.bootstrap', 'ngSanitize'])
-        
+    angular.module('acNoteApp', ["ui.router", 'ui.bootstrap'])        
 		.run(['$rootScope', '$state', '$stateParams', '$timeout', '$http', '$log', 
         function ($rootScope, $state, $stateParams, $timeout, $http, $log) {
             $rootScope.$state = $state;
@@ -43,7 +42,7 @@
             //});
             
             $rootScope.$on('$stateChangeStart', 
-		    		function (event, toState, toParams, fromState, fromParams) {
+		        function (event, toState, toParams, fromState, fromParams) {
                     //$log.info('HIH: state change start, target url is ' + toState.url + "; state is " + toState.name);
                 
                     //if (toState.name === 'login' || toState.name === 'register') {
@@ -64,10 +63,9 @@
                     //$state.go("login");
                 }
             );
-        }
-    ])
+        }])
 
-	.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', function ($stateProvider, $urlRouterProvider, $translateProvider) {
+	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider ) {
             
             /////////////////////////////
             // Redirects and Otherwise //
@@ -149,109 +147,96 @@
 		  //.fallbackLanguage('en');
         }])
 	
-    .controller('PopupDialogController', ['$scope', '$rootScope', '$log', '$translate', '$uibModalInstance', 'TitleStr', 'Details', 
-        function ($scope, $rootScope, $log, $translate, $uibModalInstance, TitleStr, Details) {
-            $scope.TitleStr = TitleStr;
-            $scope.Details = Details;
+	.controller('MainController', ['$scope', '$rootScope', '$log', '$uibModal',
+        function ($scope, $rootScope, $log, $uibModal) {
+     //       $scope.currentTheme = "lumen"; // Default theme: , readable
             
-            $scope.ok = function () {
-                $uibModalInstance.close(true);
-            };
-            $scope.cancel = function () {
-                $uibModalInstance.dismiss('cancel');
-            };
-        }])
-        
-	.controller('MainController', ['$scope', '$rootScope', '$log', '$translate', '$uibModal', 'utils', 
-        function ($scope, $rootScope, $log, $translate, $uibModal, utils) {
-            $scope.currentTheme = "lumen"; // Default theme: , readable
+     //       var arCSS = utils.getThemeCSSPath($scope.currentTheme);
+     //       $scope.bootstrapcss = arCSS[0];
+     //       $scope.bootstrap_defaultcss = arCSS[1];
             
-            var arCSS = utils.getThemeCSSPath($scope.currentTheme);
-            $scope.bootstrapcss = arCSS[0];
-            $scope.bootstrap_defaultcss = arCSS[1];
-            
-            $scope.$on('ThemeChange', function (oEvent, newtheme) {
-                $log.info('HIH: Theme has changed!');
+     //       $scope.$on('ThemeChange', function (oEvent, newtheme) {
+     //           $log.info('HIH: Theme has changed!');
                 
-                if ($scope.currentTheme !== newtheme) {
-                    $scope.currentTheme = newtheme;
+     //           if ($scope.currentTheme !== newtheme) {
+     //               $scope.currentTheme = newtheme;
                     
-                    var arCSS = utils.getThemeCSSPath($scope.currentTheme);
-                    $scope.bootstrapcss = arCSS[0];
-                    $scope.bootstrap_defaultcss = arCSS[1];
-                }
-            });
+     //               var arCSS = utils.getThemeCSSPath($scope.currentTheme);
+     //               $scope.bootstrapcss = arCSS[0];
+     //               $scope.bootstrap_defaultcss = arCSS[1];
+     //           }
+     //       });
             
-            $scope.$on('ShowMessage', function (oEvent, msgHeader, msgDetail, msgType, conf_func) {
-                $log.info('HIH: ShowMessage event occurred');
-                $log.info("HIH Show message: header: " + msgHeader + "; detail: " + msgDetail);
+     //       $scope.$on('ShowMessage', function (oEvent, msgHeader, msgDetail, msgType, conf_func) {
+     //           $log.info('HIH: ShowMessage event occurred');
+     //           $log.info("HIH Show message: header: " + msgHeader + "; detail: " + msgDetail);
                 
-                if (conf_func && angular.isFunction(conf_func)) {
-                    window.swal({
-                        title: msgHeader,   
-                        text: msgDetail,   
-                        type: msgType || "warning", 
-                        showCancelButton: true, 
-                        confirmButtonColor: "#DD6B55", 
-                        confirmButtonText: "Yes, delete it!", 
-                        closeOnConfirm: true
-                    }, 
-					conf_func
-                    );
-                } else {
-                    window.swal(msgHeader, msgDetail, msgType || "error");
-                }
-            });
+     //           if (conf_func && angular.isFunction(conf_func)) {
+     //               window.swal({
+     //                   title: msgHeader,   
+     //                   text: msgDetail,   
+     //                   type: msgType || "warning", 
+     //                   showCancelButton: true, 
+     //                   confirmButtonColor: "#DD6B55", 
+     //                   confirmButtonText: "Yes, delete it!", 
+     //                   closeOnConfirm: true
+     //               }, 
+					//conf_func
+     //               );
+     //           } else {
+     //               window.swal(msgHeader, msgDetail, msgType || "error");
+     //           }
+     //       });
             
-            $scope.$on('ShowMessageNeedTranslate', function (oEvent, msgHeaderStr, msgDetailStr, msgType, conf_func) {
-                $log.info('HIH: ShowMessageNeedTranslate event occurred');
-                $log.info("HIH Show message: header: " + msgHeaderStr + "; detail: " + msgDetailStr);
+     //       $scope.$on('ShowMessageNeedTranslate', function (oEvent, msgHeaderStr, msgDetailStr, msgType, conf_func) {
+     //           $log.info('HIH: ShowMessageNeedTranslate event occurred');
+     //           $log.info("HIH Show message: header: " + msgHeaderStr + "; detail: " + msgDetailStr);
                 
-                $translate([msgHeaderStr, msgDetailStr]).then(function (translations) {
-                    var hdr = translations[msgHeaderStr];
-                    var dtal = translations[msgDetailStr];
+     //           $translate([msgHeaderStr, msgDetailStr]).then(function (translations) {
+     //               var hdr = translations[msgHeaderStr];
+     //               var dtal = translations[msgDetailStr];
                     
-                    if (conf_func && angular.isFunction(conf_func)) {
-                        window.swal({
-                            title: hdr,   
-                            text: dtal,   
-                            type: msgType || "warning", 
-                            showCancelButton: true, 
-                            confirmButtonColor: "#DD6B55", 
-                            confirmButtonText: "Yes, delete it!", 
-                            closeOnConfirm: true
-                        }, 
-								conf_func
-                        );
-                    } else {
-                        window.swal(hdr, dtal, msgType || "error");
-                    }
-                });
-            });
+     //               if (conf_func && angular.isFunction(conf_func)) {
+     //                   window.swal({
+     //                       title: hdr,   
+     //                       text: dtal,   
+     //                       type: msgType || "warning", 
+     //                       showCancelButton: true, 
+     //                       confirmButtonColor: "#DD6B55", 
+     //                       confirmButtonText: "Yes, delete it!", 
+     //                       closeOnConfirm: true
+     //                   }, 
+					//			conf_func
+     //                   );
+     //               } else {
+     //                   window.swal(hdr, dtal, msgType || "error");
+     //               }
+     //           });
+     //       });
             
-            $scope.$on('ShowMessageEx', function (oEvent, TitleStr, Details, AfterProcFunc) {
-                var modalInstance = $uibModal.open({
-                    animation: true,
-                    templateUrl: 'app/views/modaldlg.html',
-                    controller: 'PopupDialogController',
-                    size: 'lg',
-                    backdrop: 'static',
-                    resolve: {
-                        TitleStr: function () { return TitleStr; },
-                        Details: function () { return Details; }
-                    }
-                });
+     //       $scope.$on('ShowMessageEx', function (oEvent, TitleStr, Details, AfterProcFunc) {
+     //           var modalInstance = $uibModal.open({
+     //               animation: true,
+     //               templateUrl: 'app/views/modaldlg.html',
+     //               controller: 'PopupDialogController',
+     //               size: 'lg',
+     //               backdrop: 'static',
+     //               resolve: {
+     //                   TitleStr: function () { return TitleStr; },
+     //                   Details: function () { return Details; }
+     //               }
+     //           });
                 
-                modalInstance.result.then(function (bOK) {
-                    $log.info("HIH Modal: closed by OK button: " + new Date());
-                    if (AfterProcFunc && angular.isFunction(AfterProcFunc)) {
-                        $log.info("HIH Popup: running AfterProcFunc ....");
-                        AfterProcFunc();
-                    }
-                }, function () {
-                    $log.info("HIH Modal: dismissed by Cancel button: " + new Date());
-                });
-            });
+     //           modalInstance.result.then(function (bOK) {
+     //               $log.info("HIH Modal: closed by OK button: " + new Date());
+     //               if (AfterProcFunc && angular.isFunction(AfterProcFunc)) {
+     //                   $log.info("HIH Popup: running AfterProcFunc ....");
+     //                   AfterProcFunc();
+     //               }
+     //           }, function () {
+     //               $log.info("HIH Modal: dismissed by Cancel button: " + new Date());
+     //           });
+     //       });
         }])
 	
 	.controller('HomeController', ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$log', '$q', 
@@ -318,25 +303,25 @@
    //         });
             
             $scope.goDetail = function (row) {
-                if (row.AccountID) {
-                    // Go to the downpayment relevant doc
-                    $state.go('home.finance.document.dptmpdoc_post', { docid: row.DPTempID });
-                } else {
-                    var q1 = utils.loadUserListQ();
-                    var q2 = utils.loadLearnCategoriesQ();
-                    $q.all([q1, q2])
-                    .then(function (response) {
-                        utils.loadLearnObjectsQ()
-                            .then(function (response2) {
-                            $state.go('home.learn.history.create');
-                        }, function (reason2) {
-                            $rootScope.$broadcast("ShowMessageEx", "Error", [{ Type: 'danger', Message: reason2 }]);
-                        });
+                //if (row.AccountID) {
+                //    // Go to the downpayment relevant doc
+                //    $state.go('home.finance.document.dptmpdoc_post', { docid: row.DPTempID });
+                //} else {
+                //    var q1 = utils.loadUserListQ();
+                //    var q2 = utils.loadLearnCategoriesQ();
+                //    $q.all([q1, q2])
+                //    .then(function (response) {
+                //        utils.loadLearnObjectsQ()
+                //            .then(function (response2) {
+                //            $state.go('home.learn.history.create');
+                //        }, function (reason2) {
+                //            $rootScope.$broadcast("ShowMessageEx", "Error", [{ Type: 'danger', Message: reason2 }]);
+                //        });
                         
-                    }, function (reason) {
-                        $rootScope.$broadcast("ShowMessageEx", "Error", [{ Type: 'danger', Message: reason }]);
-                    });
-                }
+                //    }, function (reason) {
+                //        $rootScope.$broadcast("ShowMessageEx", "Error", [{ Type: 'danger', Message: reason }]);
+                //    });
+                //}
             };
             $scope.refreshTodo = function () {
                 $scope.listModInfo = [];
@@ -377,73 +362,61 @@
             // User detail page
             $scope.listCurUserLogList = [];
             
-            $scope.displayedCollection = [
-                { userobj: 'Common.ID', usercont: $scope.CurrentUser.userid },
-                { userobj: 'Login.DisplayAs', usercont: $scope.CurrentUser.userdisplayas },
-                { userobj: 'Login.Gender', usercont: utils.genderFormatter($scope.CurrentUser.usergender) },
-                { userobj: 'Login.RegisterDate', usercont: $scope.CurrentUser.usercreatedon }
-            ];
+            //$scope.displayedCollection = [
+            //    { userobj: 'Common.ID', usercont: $scope.CurrentUser.userid },
+            //    { userobj: 'Login.DisplayAs', usercont: $scope.CurrentUser.userdisplayas },
+            //    { userobj: 'Login.Gender', usercont: utils.genderFormatter($scope.CurrentUser.usergender) },
+            //    { userobj: 'Login.RegisterDate', usercont: $scope.CurrentUser.usercreatedon }
+            //];
             
             $scope.logout = function () {
-                $log.info("HIH: Logout triggerd!");
-                utils.sendRequest({ objecttype: 'USERLOGOUT' }, function (data, status, headers, config) {
+                //$log.info("HIH: Logout triggerd!");
+                //utils.sendRequest({ objecttype: 'USERLOGOUT' }, function (data, status, headers, config) {
                     
-                    // Clear the current user information
-                    $rootScope.isLogin = false;
-                    $rootScope.CurrentUser = {};
-                    $scope.CurrentUser = {};
+                //    // Clear the current user information
+                //    $rootScope.isLogin = false;
+                //    $rootScope.CurrentUser = {};
+                //    $scope.CurrentUser = {};
                     
-                    for (var prop in $rootScope) {
-                        if ($rootScope.hasOwnProperty(prop)) {
-                            $log.log("HIH Logout: " + prop);
-                            if (prop.charAt(0) !== "$") {
-                                delete $rootScope[prop];
-                                $log.log("HIH Logout: " + prop + " removed");
-                            }
-                        }
-                    }
+                //    for (var prop in $rootScope) {
+                //        if ($rootScope.hasOwnProperty(prop)) {
+                //            $log.log("HIH Logout: " + prop);
+                //            if (prop.charAt(0) !== "$") {
+                //                delete $rootScope[prop];
+                //                $log.log("HIH Logout: " + prop + " removed");
+                //            }
+                //        }
+                //    }
                     
-                    // Redirect to login page
-                    $state.go('login');
-                }, function (data, status, headers, config) {
-                    // Throw out error message				
-                    $rootScope.$broadcast('ShowMessageEx', 'Error', [{ Type: 'danger', Message: 'Unknown reason for logging out!' }]);
-                });
+                //    // Redirect to login page
+                //    $state.go('login');
+                //}, function (data, status, headers, config) {
+                //    // Throw out error message				
+                //    $rootScope.$broadcast('ShowMessageEx', 'Error', [{ Type: 'danger', Message: 'Unknown reason for logging out!' }]);
+                //});
             };
             
             $scope.setTheme = function (theme) {
-                $log.info("HIH: Theme change triggerd!");
+                //$log.info("HIH: Theme change triggerd!");
                 
-                var realtheme = "";
-                if (theme && theme.length > 0) {
-                    // Now replace the CSS
-                    realtheme = theme;
-                } else {
-                    // Go for default theme
-                    realtheme = "default";
-                }
-                $rootScope.$broadcast('ThemeChange', realtheme);
+                //var realtheme = "";
+                //if (theme && theme.length > 0) {
+                //    // Now replace the CSS
+                //    realtheme = theme;
+                //} else {
+                //    // Go for default theme
+                //    realtheme = "default";
+                //}
+                //$rootScope.$broadcast('ThemeChange', realtheme);
             };
             
             $scope.setLanguage = function (newLang) {
-                $log.info("HIH: Language change triggerd!");
-                $translate.use(newLang);
-			
-		  	// if (newLang === "zh") {
-			// 	i18nService.setCurrentLang('zh-CN');					  
-			// } else {
-			// 	i18nService.setCurrentLang('en');
-			// }
+                //$log.info("HIH: Language change triggerd!");
+                //$translate.use(newLang);
             };
         }])
 
 	.controller('UserListController', ['$scope', '$rootScope', '$state', '$http', '$log', function ($scope, $rootScope, $state, $http, $log) {
-   //         utils.loadUserListQ()
-			//.then(function (response) {
-			//	// Do nothing
-   //         }, function (reason) {
-   //             $rootScope.$broadcast('ShowMessageEx', 'Error', [{ Type: 'danger', Message: reason }]);
-   //         });
         }])
 	
 	.controller('AboutController', ['$scope', '$rootScope', function ($scope, $rootScope) {

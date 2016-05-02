@@ -35,7 +35,8 @@
     <Compile Include="models\client.js" />
     <Compile Include="models\code.js" />
     <Compile Include="models\token.js" />
-    <Compile Include="public\TodoApp\javascript\app.js" />
+    <Compile Include="public\NoteApp\javascript\noteapp.js" />
+    <Compile Include="public\TodoApp\javascript\todoapp.js" />
     <Compile Include="routes\apiclient.js" />
     <Compile Include="server.js" />
     <Compile Include="controller\authcontroller.js" />
@@ -58,6 +59,8 @@
     <Folder Include="models\" />
     <Folder Include="controller\" />
     <Folder Include="public\NoteApp\" />
+    <Folder Include="public\NoteApp\javascript\" />
+    <Folder Include="public\NoteApp\view\" />
     <Folder Include="public\TodoApp\" />
     <Folder Include="public\TodoApp\javascript\" />
     <Folder Include="public\TodoApp\view\" />
@@ -69,6 +72,8 @@
     <Folder Include="routes\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="public\NoteApp\view\home.html" />
+    <Content Include="public\NoteApp\view\welcome.html" />
     <Content Include="public\package.json" />
     <Content Include="public\TodoApp\index.html" />
     <Content Include="public\TodoApp\stylesheets\style.css" />

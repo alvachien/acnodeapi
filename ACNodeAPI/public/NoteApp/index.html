@@ -1,14 +1,44 @@
 ﻿<!DOCTYPE html>
 <html ng-app="acNoteApp" ng-controller="MainController">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="AC Note App">
-        <meta name="author" content="Alva Chien">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AC Note App">
+    <meta name="author" content="Alva Chien">
 
-        <title>AC Note App, by Alva Chien</title>
-    </head>
-    <body>
-    </body>
+    <link href="..\node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet">
+    <link href="..\node_modules\bootstrap\dist\css\bootstrap-theme.min.css" rel="stylesheet">
+
+    <title>AC Todo App, by Alva Chien</title>
+</head>
+<body>
+    <!-- Main content area begins -->
+    <div class="container-fluid" ui-view></div>
+    <!-- Main content area ends -->
+    <!-- Footer area begins -->
+    <footer class="footer navbar-inverse">
+        <div class="container">
+            <p class="text-muted">
+                <div><span>Copyright</span> © 2014 - 2016 Alva Chien</div>
+                <div>An open source project on GitHub: <a target="_blank" href="https://github.com/alvachien/acnodeapi">Node API</a> | Report an issue <a target="_blank" href="https://github.com/alvachien/hih/issues/new">Click</a> </div>
+            </p>
+        </div>
+    </footer>
+    <!-- Footer area ends -->
+    <!-- JS loading -->
+    <!-- Angular JS -->
+    <script src="..\node_modules\angular\angular.js"></script>
+    <script src="..\node_modules\angular-animate\angular-animate.min.js"></script>
+    <script src="..\node_modules\angular-sanitize\angular-sanitize.min.js"></script>
+    <script src="..\node_modules\angular-touch\angular-touch.min.js"></script>
+    <!-- jQuery -->
+    <script src="..\node_modules\jquery\dist\jquery.min.js"></script>
+    <!-- Angular UI - UIRoute -->
+    <script src="..\node_modules\angular-ui-router\release\angular-ui-router.min.js"></script>
+    <!-- Angular UI - UI bootstrap -->
+    <script src="..\node_modules\angular-ui-bootstrap\dist\ui-bootstrap-tpls.js"></script>
+
+    <script src=".\javascript\noteapp.js"></script>
+</body>
 </html>
