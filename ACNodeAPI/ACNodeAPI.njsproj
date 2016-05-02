@@ -50,7 +50,6 @@
     <Compile Include="util\dbconn.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.css" />
-    <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />

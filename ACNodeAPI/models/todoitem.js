@@ -13,7 +13,11 @@
         // Depend...
     }
     this.saveToDBModel = function (dbmodel) {
-
+        dbmodel.ID = this.ID;
+        dbmodel.Name = this.Name;
+        dbmodel.Details = this.Details;
+        dbmodel.ParentID = this.ParentID;
+        // Others
     }
 }
 
