@@ -35,6 +35,7 @@
     <Compile Include="models\client.js" />
     <Compile Include="models\code.js" />
     <Compile Include="models\token.js" />
+    <Compile Include="public\TodoApp\javascript\app.js" />
     <Compile Include="routes\apiclient.js" />
     <Compile Include="server.js" />
     <Compile Include="controller\authcontroller.js" />
@@ -49,21 +50,30 @@
     <Compile Include="bin\www" />
     <Compile Include="util\dbconn.js" />
     <Content Include="package.json" />
-    <Content Include="public\stylesheets\style.css" />
+    <Content Include="public\NoteApp\index.html" />
+    <Content Include="public\NoteApp\stylesheets\style.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="models\" />
     <Folder Include="controller\" />
+    <Folder Include="public\NoteApp\" />
+    <Folder Include="public\TodoApp\" />
+    <Folder Include="public\TodoApp\javascript\" />
+    <Folder Include="public\TodoApp\view\" />
+    <Folder Include="public\TodoApp\stylesheets\" />
     <Folder Include="sqls\" />
     <Folder Include="util\" />
     <Folder Include="public\" />
-    <Folder Include="public\images\" />
-    <Folder Include="public\javascripts\" />
-    <Folder Include="public\stylesheets\" />
+    <Folder Include="public\NoteApp\stylesheets\" />
     <Folder Include="routes\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="public\package.json" />
+    <Content Include="public\TodoApp\index.html" />
+    <Content Include="public\TodoApp\stylesheets\style.css" />
+    <Content Include="public\TodoApp\view\home.html" />
+    <Content Include="public\TodoApp\view\welcome.html" />
     <Content Include="sqls\ACExpressAPI.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />

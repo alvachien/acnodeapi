@@ -5,4 +5,4 @@
     this.UserID = "";
 };
 
-module.exports = chient;
+module.exports = client;
