@@ -43,23 +43,23 @@
 
             $scope.$watch('registerInfo', function (newVal, oldVal) {
                 if (newVal.Password !== oldVal.Password) {
-                    var nLevel = hih.ModelUtility.CheckPasswordStrength(newVal.Password);
-                    if (nLevel === hih.Constants.Login_PwdStrgth_VeryStrong) {
-                        $scope.PasswordStrengthValue = 100;
-                        $scope.ProgressClass = "progress-bar progress-bar-success";                        
-                    } else if (nLevel === hih.Constants.Login_PwdStrgth_Strong) {
-                        $scope.PasswordStrengthValue = 80;
-                        $scope.ProgressClass = "progress-bar progress-bar-info";
-                    } else if (nLevel === hih.Constants.Login_PwdStrgth_Normal) {
-                        $scope.PasswordStrengthValue = 60;
-                        $scope.ProgressClass = "progress-bar progress-bar-warning";
-                    } else if (nLevel === hih.Constants.Login_PwdStrgth_Weak) {
-                        $scope.PasswordStrengthValue = 30;
-                        $scope.ProgressClass = "progress-bar progress-bar-danger";
-                    } else {
-                        $scope.PasswordStrengthValue = 0;
-                        $scope.ProgressClass = "progress-bar progress-bar-danger";
-                    }
+                    //var nLevel = hih.ModelUtility.CheckPasswordStrength(newVal.Password);
+                    //if (nLevel === hih.Constants.Login_PwdStrgth_VeryStrong) {
+                    //    $scope.PasswordStrengthValue = 100;
+                    //    $scope.ProgressClass = "progress-bar progress-bar-success";                        
+                    //} else if (nLevel === hih.Constants.Login_PwdStrgth_Strong) {
+                    //    $scope.PasswordStrengthValue = 80;
+                    //    $scope.ProgressClass = "progress-bar progress-bar-info";
+                    //} else if (nLevel === hih.Constants.Login_PwdStrgth_Normal) {
+                    //    $scope.PasswordStrengthValue = 60;
+                    //    $scope.ProgressClass = "progress-bar progress-bar-warning";
+                    //} else if (nLevel === hih.Constants.Login_PwdStrgth_Weak) {
+                    //    $scope.PasswordStrengthValue = 30;
+                    //    $scope.ProgressClass = "progress-bar progress-bar-danger";
+                    //} else {
+                    //    $scope.PasswordStrengthValue = 0;
+                    //    $scope.ProgressClass = "progress-bar progress-bar-danger";
+                    //}
                 }
             }, true);
 
