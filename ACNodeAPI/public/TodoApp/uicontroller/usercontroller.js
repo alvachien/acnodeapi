@@ -37,31 +37,30 @@
         }])
 
 	.controller('UserRegisterController', ['$scope', '$rootScope', '$state', '$http', '$log', function ($scope, $rootScope, $state, $http, $log) {
-            $scope.registerInfo = new acToDo.UserRegisterInfo();
+            $scope.registerInfo = new acnodeapi.UserRegisterInfo();
             $scope.ProgressClass = "progress-bar progress-bar-danger";
             $scope.regGender = "0";
 
             $scope.$watch('registerInfo', function (newVal, oldVal) {
                 if (newVal.Password !== oldVal.Password) {
-                    //var nLevel = hih.ModelUtility.CheckPasswordStrength(newVal.Password);
-                    //if (nLevel === hih.Constants.Login_PwdStrgth_VeryStrong) {
-                    //    $scope.PasswordStrengthValue = 100;
-                    //    $scope.ProgressClass = "progress-bar progress-bar-success";                        
-                    //} else if (nLevel === hih.Constants.Login_PwdStrgth_Strong) {
-                    //    $scope.PasswordStrengthValue = 80;
-                    //    $scope.ProgressClass = "progress-bar progress-bar-info";
-                    //} else if (nLevel === hih.Constants.Login_PwdStrgth_Normal) {
-                    //    $scope.PasswordStrengthValue = 60;
-                    //    $scope.ProgressClass = "progress-bar progress-bar-warning";
-                    //} else if (nLevel === hih.Constants.Login_PwdStrgth_Weak) {
-                    //    $scope.PasswordStrengthValue = 30;
-                    //    $scope.ProgressClass = "progress-bar progress-bar-danger";
-                    //} else {
-                    //    $scope.PasswordStrengthValue = 0;
-                    //    $scope.ProgressClass = "progress-bar progress-bar-danger";
-                    //}
-                }
-            }, true);
+                    var nLevel = acnodeapi.Utility.CheckPasswordStrength(newVal.Password);
+                    if (nLevel == acnodeapi.Utility.LoginPasswordLength.VeryStrong)
+                        $scope.PasswordStrengthValue = 100;
+                        $scope.ProgressClass = "progress-bar progress-bar-success";                        
+                    } else if (nLevel === acnodeapi.Utility.LoginPasswordLength.Strong) {
+                        $scope.PasswordStrengthValue = 80;
+                        $scope.ProgressClass = "progress-bar progress-bar-info";
+                    } else if (nLevel === acnodeapi.Utility.LoginPasswordLength.Normal) {
+                        $scope.PasswordStrengthValue = 60;
+                        $scope.ProgressClass = "progress-bar progress-bar-warning";
+                    } else if (nLevel === acnodeapi.Utility.LoginPasswordLength.Weak) {
+                        $scope.PasswordStrengthValue = 30;
+                        $scope.ProgressClass = "progress-bar progress-bar-danger";
+                    } else {
+                        $scope.PasswordStrengthValue = 0;
+                        $scope.ProgressClass = "progress-bar progress-bar-danger";
+                    }
+                }, true);
 
             $scope.submitRegister = function () {
                 // Handle the submit event
@@ -71,7 +70,6 @@
 
 	.controller('UserLoginController', ['$scope', '$rootScope', '$state', '$http', '$log', function ($scope, $rootScope, $state, $http, $log) {
             $scope.registerInfo = new UserRegisterInfo();
-
 
         }])
 }());
