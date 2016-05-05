@@ -39,6 +39,24 @@ exports.checkUserExist = function (req, res) {
 };
 
 exports.registerUser = function (req, res) {
+    // Register an user
+    var usr = new User();
+    usr.UserID = req.body.UserID;
+    usr.Password = req.body.Password;
+
+    dbconn.getdatafromdb("SELECT * FROM actest.user WHERE Name = " + usr.UserID, function (err, rows) {
+        if (err) {
+            res.send(err);
+        } else {
+            if (rows && rows.length > 0) {
+
+            }
+
+            res.json();
+        }
+    });
+    //req.body.UserID;
+    //req.body.Password;
 
 };
 

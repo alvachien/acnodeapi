@@ -159,6 +159,16 @@
             this.Gender = 0;
             this.PasswordStrengthValue = "";
         }
+        
+        UserRegisterInfo.prototype.IsValid = function () {
+            if (this.UserID.length <= 0)
+                return false;
+            if (this.Password.length <= 0)
+                return false;
+            if (this.Password !== this.ConfirmedPassword)
+                return false;
+            return true;
+        };
         return UserRegisterInfo;
     }(acnodeapi.UserBasicInfo));
 }());

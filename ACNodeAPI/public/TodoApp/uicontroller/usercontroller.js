@@ -65,6 +65,17 @@
             $scope.submitRegister = function () {
                 // Handle the submit event
                 $scope.registerInfo.Gender = parseInt($scope.regGender);
+
+                // Perform the checks.
+                if (!$scope.registerInfo.IsValid()) {
+                    return;
+                }
+
+                // Now the real submit
+                $http.post('/api/user', $scope.registerInfo)
+                    .then(function (response) {
+                    }, function (reason) { 
+                    });
             }
         }])
 
