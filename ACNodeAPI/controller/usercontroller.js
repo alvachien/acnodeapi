@@ -41,6 +41,7 @@ exports.checkUserExist = function (req, res) {
 exports.registerUser = function (req, res) {
     // Register an user
     var usr = new User();
+    usr.initFromUIBody(req.body);
     usr.UserID = req.body.UserID;
     usr.Password = req.body.Password;
 

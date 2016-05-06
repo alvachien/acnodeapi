@@ -3,6 +3,12 @@
     this.DisplayAs = "";
     this.HashedPassword = "";
     this.RegisterDate = new Date();
+    
+    this.initFromUIBody = function (uibody) {
+        this.Name = uibody.Name;
+        this.Password = uibody.Password;
+        
+    };
 
     this.initFromDBModel = function (dbmodel) {
         this.Name = dbmodel.Name;
