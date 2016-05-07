@@ -26,7 +26,7 @@ exports.readUser = function (req, res) {
         } else {
             var usr = new User();
             if (rows && rows.length > 0) {
-                usr.initFromDBModel(rows[i]);
+                usr.initFromDBModel(rows[0]);
             }
             
             res.json(usr);
@@ -39,6 +39,8 @@ exports.checkUserExist = function (req, res) {
 };
 
 exports.registerUser = function (req, res) {
+    //res.setHeader('Content-Type', 'text/json');
+    
     // Register an user
     var usr = new User();
     usr.initFromUIBody(req.body);
@@ -47,18 +49,29 @@ exports.registerUser = function (req, res) {
 
     dbconn.getdatafromdb("SELECT * FROM actest.user WHERE Name = " + usr.UserID, function (err, rows) {
         if (err) {
-            res.send(err);
+            res.status(500);
+            res.json({
+                error: true,
+                message: "Failed to execute the SQL"
+            });
         } else {
             if (rows && rows.length > 0) {
-
+                res.status(500);
+                res.json({
+                    error: true,
+                    message: "User registered already: " + usr.UserID,
+                });
             }
-
-            res.json();
         }
     });
-    //req.body.UserID;
-    //req.body.Password;
+    
+    // Perform the checks
 
+    res.status(500);
+    res.json({
+        error: true,
+        message: "Not yet ready!"
+    });
 };
 
 exports.updateUser = function (req, res) {
