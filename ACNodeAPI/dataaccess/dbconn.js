@@ -1,5 +1,5 @@
 ﻿var mysql = require('mysql');
-var poolconf = require('./dbconncfg.js');
+var poolconf = require('./dbconncfg');
 
 var pool = mysql.createPool(poolconf.dbpoolconfig);
 
@@ -13,7 +13,6 @@ var getdata = function (strsql, rtnFn) {
             connection.query(strsql, function (err, rows) {
                 if (err) {
                     rtnFn(err, null);
-                    return;
                 } else {
                     rtnFn(null, rows);
                 }
@@ -34,7 +33,6 @@ var getdata2 = function (strsql, arParams, rtnFn) {
             connection.query(strsql, arParams, function (err, rows) {
                 if (err) {
                     rtnFn(err, null);
-                    return;
                 } else {
                     rtnFn(null, rows);
                 }
@@ -55,7 +53,6 @@ var savedata = function (strsql, arParams, rtnFn) {
             connection.query(strsql, arParams, function(err, results) {
                 if (err) {
                     rtnFn(err, null);
-                    return;
                 } else {
                     rtnFn(null, results);
                 }

@@ -36,6 +36,6 @@ node_modules
 /ACNodeAPI/.ntvs_analysis.dat
 /ACNodeAPI/.ntvs_analysis.dat.tmp
 /ACNodeAPI/public/stylesheets/style.styl
-
+dbconncfg.js
 *.suo
 

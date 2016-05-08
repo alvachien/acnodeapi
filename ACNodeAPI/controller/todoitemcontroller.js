@@ -1,6 +1,6 @@
 ﻿var express = require('express');
 var TodoItem = require('../models/todoitem');
-var dbconn = require('../util/dbconn.js');
+var dbconn = require('../dataaccess/dbconn.js');
 
 exports.getTodoItems = function (req, res) {
     dbconn.getdatafromdb('SELECT * FROM actest.todoitem', function (err, rows) {

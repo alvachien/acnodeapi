@@ -51,8 +51,8 @@
     <Compile Include="routes\apiuser.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="bin\www" />
-    <Compile Include="util\dbconncfg.js" />
-    <Compile Include="util\dbconn.js" />
+    <Compile Include="dataaccess\dbconncfg.js" />
+    <Compile Include="dataaccess\dbconn.js" />
     <Content Include="package.json" />
     <Content Include="public\NoteApp\index.html" />
     <Content Include="public\NoteApp\stylesheets\style.css" />
@@ -72,7 +72,7 @@
     <Folder Include="public\TodoApp\stylesheets\" />
     <Folder Include="public\TodoApp\view\users\" />
     <Folder Include="sqls\" />
-    <Folder Include="util\" />
+    <Folder Include="dataaccess\" />
     <Folder Include="public\" />
     <Folder Include="public\NoteApp\stylesheets\" />
     <Folder Include="routes\" />

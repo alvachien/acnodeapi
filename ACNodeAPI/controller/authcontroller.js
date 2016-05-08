@@ -3,7 +3,7 @@ var BasicStrategy = require('passport-http').BasicStrategy;
 var BearerStrategy = require('passport-http-bearer').Strategy
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
-var dbconn = require('../util/dbconn');
+var dbconn = require('../dataaccess/dbconn');
 var Token = require('../models/token');
 
 passport.use(new BearerStrategy(

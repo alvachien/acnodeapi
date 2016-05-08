@@ -1,6 +1,6 @@
 ﻿var express = require('express');
 var Token = require('../models/token');
-var dbconn = require('../util/dbconn');
+var dbconn = require('../dataaccess/dbconn');
 
 exports.createClient = function (req, res) {
     var client = new Client();
