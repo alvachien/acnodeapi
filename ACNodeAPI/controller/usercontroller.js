@@ -43,10 +43,10 @@ exports.registerUser = function (req, res) {
     
     // Register an user
     var usr = new User();
-    usr.initFromUIBody(req.body);
+    usr.initForRegister(req.body);
     usr.UserID = req.body.UserID;
     usr.Password = req.body.Password;
-
+    
     dbconn.getdatafromdb("SELECT * FROM actest.user WHERE Name = " + usr.UserID, function (err, rows) {
         if (err) {
             res.status(500);
@@ -66,12 +66,23 @@ exports.registerUser = function (req, res) {
     });
     
     // Perform the checks
-
-    res.status(500);
-    res.json({
-        error: true,
-        message: "Not yet ready!"
-    });
+    var arCheckResults = usr.checkForRegister();
+    if (arCheckResults.length <= 0) {
+        // For testing
+        arCheckResults.push("Test 1");
+        arCheckResults.push("Test 2");
+    }
+    
+    if (arCheckResults.length >= 0) {
+        res.status(500);
+        res.json({
+            error: true,
+            message: arCheckResults
+        });
+    } else {
+        // Real insert
+        dbconn.savedatatodb("INSERT INTO actest.user");
+    }
 };
 
 exports.updateUser = function (req, res) {

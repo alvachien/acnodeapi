@@ -1,11 +1,7 @@
 ﻿var mysql = require('mysql');
+var poolconf = require('./dbconfig');
 
-var pool = mysql.createPool({
-    connectionLimit : 10,
-    host            : 'localhost',
-    user            : 'root',
-    password        : 'password'
-});
+var pool = mysql.createPool(poolconf);
 
 var getdata = function (strsql, rtnFn) {
     console.log(strsql);
