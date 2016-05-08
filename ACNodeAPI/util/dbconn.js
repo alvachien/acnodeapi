@@ -24,6 +24,27 @@ var getdata = function (strsql, rtnFn) {
     });
 }
 
+var getdata2 = function (strsql, arParams, rtnFn) {
+    console.log(strsql);
+    pool.getConnection(function (err, connection) {
+        if (err) {
+            rtnFn(err, null);
+            return;
+        } else {
+            connection.query(strsql, arParams, function (err, rows) {
+                if (err) {
+                    rtnFn(err, null);
+                    return;
+                } else {
+                    rtnFn(null, rows);
+                }
+                
+                connection.release();
+            });
+        }
+    });
+}
+
 var savedata = function (strsql, arParams, rtnFn) {
     console.log(strsql);
     pool.getConnection(function (err, connection) {
@@ -46,4 +67,5 @@ var savedata = function (strsql, arParams, rtnFn) {
 }
 
 exports.getdatafromdb = getdata;
+exports.getdatafromdb2 = getdata2;
 exports.savedatatodb = savedata;
