@@ -54,6 +54,7 @@ exports.registerUser = function (req, res) {
                 error: true,
                 message: "Failed to execute the SQL"
             });
+            return;
         } else {
             if (rows && rows.length > 0) {
                 res.status(500);
@@ -62,6 +63,7 @@ exports.registerUser = function (req, res) {
                     message: "User registered already: " + usr.UserID,
                 });
             }
+            return;
         }
     });
     

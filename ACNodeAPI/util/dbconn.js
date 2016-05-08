@@ -1,7 +1,7 @@
 ﻿var mysql = require('mysql');
-var poolconf = require('./dbconfig');
+var poolconf = require('./dbconn.cfg');
 
-var pool = mysql.createPool(poolconf);
+var pool = mysql.createPool(poolconf.dbpoolconfig);
 
 var getdata = function (strsql, rtnFn) {
     console.log(strsql);

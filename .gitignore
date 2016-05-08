@@ -31,6 +31,11 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# Project relevant
 /ACNodeAPI/.ntvs_analysis.dat
+/ACNodeAPI/.ntvs_analysis.dat.tmp
 /ACNodeAPI/public/stylesheets/style.styl
+
 *.suo
+

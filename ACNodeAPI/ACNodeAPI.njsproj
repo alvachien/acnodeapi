@@ -51,7 +51,7 @@
     <Compile Include="routes\apiuser.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="bin\www" />
-    <Compile Include="util\dbconfig.js" />
+    <Compile Include="util\dbconn.cfg" />
     <Compile Include="util\dbconn.js" />
     <Content Include="package.json" />
     <Content Include="public\NoteApp\index.html" />
