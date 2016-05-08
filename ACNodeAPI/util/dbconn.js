@@ -1,5 +1,5 @@
 ﻿var mysql = require('mysql');
-var poolconf = require('./dbconn.cfg');
+var poolconf = require('./dbconncfg.js');
 
 var pool = mysql.createPool(poolconf.dbpoolconfig);
 
