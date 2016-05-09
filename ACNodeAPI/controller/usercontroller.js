@@ -126,6 +126,10 @@ exports.registerUser = function (req, res) {
     });    
 };
 
+exports.logonUser = function (req, res) {
+
+};
+
 exports.updateUser = function (req, res) {
 
 };

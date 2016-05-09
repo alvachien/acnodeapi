@@ -29,6 +29,9 @@ passport.use(new BearerStrategy(
 
 passport.use(new LocalStrategy(
     function (username, password, callback) {
+        var usr = new User();
+        usr.initForLogin(username, password);
+
         User.findOne({ username: username }, function (err, user) {
             if (err) { return callback(err); }
             

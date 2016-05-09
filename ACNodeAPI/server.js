@@ -25,14 +25,17 @@ app.use(bodyParser.urlencoded({ extended: true })); // Changed from false to tru
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Use the passport package in our application
-app.use(passport.initialize());
-
 app.use(session({
     secret: 'Super Secret Session Key',
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    cookie: { maxAge: 60000 }
 }));
+//app.use(express.session({ secret: '', cookie: { maxAge: 60000 } }));
+
+// Use the passport package in our application
+app.use(passport.initialize());
+app.use(passport.session());
 
 // setting routers
 app.use('/', routeindex);

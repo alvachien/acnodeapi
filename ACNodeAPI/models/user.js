@@ -17,9 +17,9 @@ var apiuser = function () {
         this.Gender = uibody.Gender;
     };
     
-    this.initForLogin = function (uibody) {
-        this.UserID = uibody.UserID;
-        this.Password = uibody.Password;
+    this.initForLogin = function (username, password) {
+        this.UserID = username;
+        this.Password = password;
     };
     
     this.initFromDBModel = function (dbmodel) {
