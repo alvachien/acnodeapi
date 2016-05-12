@@ -6,7 +6,7 @@ var User = require('../models/user');
 var dbconn = require('../dataaccess/dbconn');
 var Token = require('../models/token');
 
-passport.use(new BearerStrategy(
+passport.use('bearer', new BearerStrategy(
     function (accessToken, callback) {
         Token.findOne({ value: accessToken }, function (err, token) {
             if (err) { return callback(err); }
@@ -27,7 +27,7 @@ passport.use(new BearerStrategy(
     }
 ));
 
-passport.use(new LocalStrategy(
+passport.use('local', new LocalStrategy(
     function (username, password, callback) {
         var usr = new User();
         usr.initForLogin(username, password);
@@ -52,7 +52,7 @@ passport.use(new LocalStrategy(
     }
 ));
 
-passport.use(new BasicStrategy(
+passport.use('basic', new BasicStrategy(
     function (username, password, callback) {
         // First check the existence
         dbconn.getdatafromdb("select name from actest.user where name = " + username, function (err, result) {
@@ -60,6 +60,8 @@ passport.use(new BasicStrategy(
                 return callback(err);
             }
         });
+        // Then, verify the password
+
 
         //User.findOne({ username: username }, function (err, user) {
         //    if (err) { return callback(err); }
@@ -95,6 +97,7 @@ passport.use('client-basic', new BasicStrategy(
     }
 ));
 
+exports.isUserLogin = passport.authenticate('local');
 exports.isClientAuthenticated = passport.authenticate('client-basic', { session : false });
 exports.isBearerAuthenticated = passport.authenticate('bearer', { session: false });
 exports.isAuthenticated = passport.authenticate('basic', { session : false }); // don't use the session

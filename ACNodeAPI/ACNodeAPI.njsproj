@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="controller\clientcontroller.js" />
     <Compile Include="controller\tokencontroller.js" />
+    <Compile Include="dataaccess\dbconncfg.sample.js" />
     <Compile Include="models\client.js" />
     <Compile Include="models\code.js" />
     <Compile Include="models\token.js" />
