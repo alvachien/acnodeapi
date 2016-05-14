@@ -30,6 +30,8 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="controller\authconfig.js" />
+    <Compile Include="controller\authconfig.sample.js" />
     <Compile Include="controller\clientcontroller.js" />
     <Compile Include="controller\tokencontroller.js" />
     <Compile Include="dataaccess\dbconncfg.sample.js" />

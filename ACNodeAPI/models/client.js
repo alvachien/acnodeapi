@@ -1,8 +1,8 @@
 ﻿var client = function () {
     this.Name = "";
     this.ID = "";
-    this.Secret = "";
-    this.UserID = "";
+    this.clientSecret = "";
+    this.clientID = "";
 };
 
 module.exports = client;
